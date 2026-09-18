@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { ArrowRight, BadgeCheck, Check, Copy, KeyRound, LayoutGrid, Mail } from 'lucide-react'
 import { useAuth, type UserProfile } from '@/components/auth-provider'
 import { CocoHeroBg } from '@/components/coco/coco-hero-bg'
-import { GlyphTier, GlyphClockRing } from '@/components/dashboard/dash-glyphs'
-import { FEATURES, TIER_LABEL } from '@/lib/tiers'
+import { GlyphTier } from '@/components/dashboard/dash-glyphs'
+import { TIER_LABEL } from '@/lib/tiers'
 
 export function DashDesktopHero({
   profile,
@@ -17,9 +17,8 @@ export function DashDesktopHero({
   onOpenTools: () => void
   onProfile: () => void
 }) {
-  const { tier, hasAccess, isUnlimited, limit, usage } = useAuth()
+  const { tier, hasAccess, isUnlimited, limit } = useAuth()
   const [copied, setCopied] = useState(false)
-  const usedToday = FEATURES.reduce((s, f) => s + (usage[f] || 0), 0)
   const verified = tier !== 'free'
 
   async function copyEmail() {
@@ -72,29 +71,28 @@ export function DashDesktopHero({
       </div>
 
       <div className="dsh-hero-strip">
-        <button type="button" onClick={onProfile} className="dsh-hero-avatar" aria-label="Open profile card" data-testid="desktop-avatar-btn">
-          <Image src="/coco-profile.png" alt={profile.name} width={112} height={112} className="h-full w-full rounded-[22px] object-cover" />
-        </button>
+        <dl className="dsh-hero-stats">
+          <Stat label="Plan" value={TIER_LABEL[tier]} />
+          <Stat label="Daily limit" value={!hasAccess ? 'Locked' : isUnlimited ? '∞' : `${limit} / tool`} />
+        </dl>
 
         <div className="dsh-hero-ident">
-          <p className="flex items-center gap-2 text-[19px] font-semibold leading-tight text-white" data-testid="desktop-hero-name">
+          <button type="button" onClick={onProfile} className="dsh-hero-avatar" aria-label="Open profile card" data-testid="desktop-avatar-btn">
+            <Image src="/coco-profile.png" alt={profile.name} width={112} height={112} className="h-full w-full rounded-[22px] object-cover" />
+          </button>
+          <p className="dsh-hero-name" data-testid="desktop-hero-name">
             <span className="truncate">{profile.name}</span>
             {verified && <BadgeCheck className="h-[18px] w-[18px] flex-none text-[#b48cff]" data-testid="desktop-verified-icon" />}
-            <span className="dsh-tier-chip" data-testid="desktop-hero-tier">{TIER_LABEL[tier]}</span>
           </p>
+        </div>
+
+        <div className="dsh-hero-contact">
           <button type="button" onClick={copyEmail} className="dsh-hero-email" data-testid="desktop-copy-email">
             <Mail className="h-3.5 w-3.5 text-[#c4a6ff]" />
             <span className="truncate">{profile.email}</span>
             {copied ? <Check className="h-3.5 w-3.5 text-[#8ef0c4]" /> : <Copy className="h-3.5 w-3.5 text-white/45" />}
           </button>
         </div>
-
-        <dl className="dsh-hero-stats">
-          <Stat label="Plan" value={TIER_LABEL[tier]} />
-          <Stat label="Daily limit" value={!hasAccess ? 'Locked' : isUnlimited ? '∞' : `${limit} / tool`} />
-          <Stat label="Used today" value={hasAccess ? String(usedToday) : '0'} />
-          <Stat label="Resets" value="6:00 AM" icon={<GlyphClockRing className="h-3.5 w-3.5 text-[#c4a6ff]" />} />
-        </dl>
       </div>
     </section>
   )
