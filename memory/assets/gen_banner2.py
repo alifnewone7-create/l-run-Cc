@@ -3,14 +3,14 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage, ImageContent
 
 PROMPT = (
     "Create a professional ultra-wide banner illustration (aspect ratio about 16:5) in the same style, composition and quality as the reference: "
-    "a glowing crystalline BULL on the LEFT (facing right, emerald/mint neon #4ade80 glow, geometric low-poly faceted head with glowing eyes) "
-    "and a glowing crystalline BEAR on the RIGHT (facing left, roaring, crimson/rose neon #fb7185 glow). "
-    "In the CENTER between them, a neon candlestick chart: green candles rising from the bull side, red candles falling toward the bear side, "
-    "with thin wicks and soft glowing wave lines beneath. "
-    "COLOR GRADING adapted to a premium fintech website: the background is deep cosmic purple-black (#0b0618 to #1a0f3d) with subtle violet "
-    "(#6d3bff / #8b5cff) nebula haze and faint diagonal light streaks, so the green and red neon pops against purple-black. "
-    "Cinematic, sharp, high detail, clean edges, no frame border lines around the image, no text, no letters, no logos, no watermark. "
-    "Full-bleed artwork that fills the whole canvas edge to edge."
+    "a glowing crystalline low-poly BULL on the LEFT (facing right, geometric faceted body, glowing eyes) and a glowing crystalline low-poly BEAR "
+    "on the RIGHT (facing left, roaring). "
+    "IMPORTANT: NO candlestick chart, NO candles, NO bars, NO graph in the middle. The CENTER is a clean, calm, empty space with only soft "
+    "flowing violet light waves / aurora ribbons and a faint starry nebula, leaving room for UI elements. "
+    "COLOR GRADING must match a premium cosmic-purple fintech website: background deep purple-black (#0b0618 to #1a0f3d) with violet nebula "
+    "(#6d3bff, #8b5cff, #b48cff). The bull glows in a mint-teal tint blended with violet edges; the bear glows in a rose-magenta tint blended with "
+    "violet edges, so both animals harmonise with the purple palette (avoid pure saturated green/red). "
+    "Cinematic, sharp, high detail, clean edges, no frame border lines, no text, no letters, no logos, no watermark. Full-bleed edge to edge."
 )
 
 def b64(path):

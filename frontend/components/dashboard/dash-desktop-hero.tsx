@@ -31,7 +31,7 @@ export function DashDesktopHero({
     <section className="dsh-hero hidden md:block" data-testid="dash-desktop-hero">
       <div className="dsh-hero-frame">
         <div className="dsh-hero-banner">
-          <Image src="/dash/hero-bullbear.webp" alt="" width={1856} height={576} className="dsh-hero-art" priority sizes="(min-width: 1280px) 1400px, 100vw" />
+          <Image src="/dash/hero-bullbear-v2.webp" alt="" width={1856} height={576} className="dsh-hero-art" priority sizes="(min-width: 1280px) 1400px, 100vw" />
           <span className="dsh-hero-shade" aria-hidden="true" />
           <span className="dsh-hero-tick dsh-hero-tick-tl" aria-hidden="true" />
           <span className="dsh-hero-tick dsh-hero-tick-tr" aria-hidden="true" />

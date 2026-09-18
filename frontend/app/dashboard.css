@@ -637,13 +637,12 @@
 .dsh-hero {
   animation: coco-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-/* Trading-themed frame: gradient hairline (iris → mint → rose), no glow */
+/* Dark-purple gradient hairline frame */
 .dsh-hero-frame {
   position: relative;
   border-radius: 30px;
   padding: 1.5px;
-  background:
-    linear-gradient(90deg, rgba(74, 222, 128, 0.85) 0%, rgba(139, 92, 255, 0.9) 28%, rgba(196, 166, 255, 0.95) 50%, rgba(139, 92, 255, 0.9) 72%, rgba(251, 113, 133, 0.85) 100%);
+  background: linear-gradient(135deg, #8b5cff 0%, #4a2a9e 28%, #2a1660 55%, #4a2a9e 80%, #7c45ff 100%);
 }
 .dsh-hero-banner {
   position: relative;
@@ -682,12 +681,12 @@
 }
 .dsh-hero-tick-tl {
   left: 18px;
-  border-left: 1.5px solid rgba(74, 222, 128, 0.6);
+  border-left: 1.5px solid rgba(196, 166, 255, 0.55);
   border-top-left-radius: 10px;
 }
 .dsh-hero-tick-tr {
   right: 18px;
-  border-right: 1.5px solid rgba(251, 113, 133, 0.6);
+  border-right: 1.5px solid rgba(196, 166, 255, 0.55);
   border-top-right-radius: 10px;
 }
 .dsh-hero-actions {
