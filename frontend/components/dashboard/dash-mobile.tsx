@@ -30,9 +30,9 @@ export function DashMascot({ onOpen }: { onOpen: () => void }) {
       <div className="dsh-mascot-stage">
         <span className="dsh-mascot-halo" aria-hidden="true" />
         <Image
-          src="/dash/mascot.webp"
+          src="/dash/mascot-v2.webp"
           alt="Coco AI mascot"
-          width={580}
+          width={671}
           height={1100}
           className="dsh-mascot-img"
           priority
