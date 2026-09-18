@@ -455,7 +455,6 @@
   margin-top: 4px;
   height: 48px;
   min-width: 200px;
-  border-radius: 999px;
   font-size: 15px;
 }
 
@@ -638,70 +637,80 @@
 .dsh-hero {
   animation: coco-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+/* Trading-themed frame: gradient hairline (iris → mint → rose) with a soft outer glow */
+.dsh-hero-frame {
+  position: relative;
+  border-radius: 30px;
+  padding: 1.5px;
+  background:
+    linear-gradient(90deg, rgba(74, 222, 128, 0.85) 0%, rgba(139, 92, 255, 0.9) 28%, rgba(196, 166, 255, 0.95) 50%, rgba(139, 92, 255, 0.9) 72%, rgba(251, 113, 133, 0.85) 100%);
+  box-shadow:
+    rgba(109, 59, 255, 0.28) 0 24px 60px -30px,
+    rgba(74, 222, 128, 0.12) -12px 0 40px -24px,
+    rgba(251, 113, 133, 0.12) 12px 0 40px -24px;
+}
+.dsh-hero-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(14px);
+  opacity: 0.35;
+  pointer-events: none;
+}
 .dsh-hero-banner {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 300px;
-  border-radius: 30px 30px 0 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 0;
+  height: 230px;
+  border-radius: 29px 29px 0 0;
   background:
-    radial-gradient(80% 90% at 82% 30%, rgba(150, 105, 255, 0.34), transparent 60%),
-    linear-gradient(168deg, #2b1a6d 0%, #221355 40%, #170d3a 100%);
+    radial-gradient(70% 90% at 50% 100%, rgba(150, 105, 255, 0.28), transparent 65%),
+    linear-gradient(168deg, #2b1a6d 0%, #221355 45%, #170d3a 100%);
 }
-.dsh-hero-banner .coco-hero-bg {
+.dsh-candles {
+  position: absolute;
+  inset: 0;
   z-index: 0;
-}
-.dsh-hero-ring {
-  position: absolute;
-  right: 6%;
-  top: 50%;
-  width: 380px;
-  height: 380px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  border: 1px dashed rgba(196, 166, 255, 0.28);
+  width: 100%;
+  height: 100%;
+  opacity: 0.72;
   pointer-events: none;
-  animation: coco-orbit 40s linear infinite;
 }
-.dsh-hero-ring::before {
-  content: '';
-  position: absolute;
-  inset: 12%;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.dsh-candles-line {
+  filter: drop-shadow(0 0 6px rgba(196, 166, 255, 0.6));
 }
-.dsh-hero-mascot {
+/* Chart-axis corner ticks */
+.dsh-hero-tick {
   position: absolute;
-  right: 5%;
-  bottom: -18px;
   z-index: 1;
-  height: 320px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 34px rgba(80, 40, 200, 0.5));
-  animation: dsh-float 6s ease-in-out infinite;
+  top: 18px;
+  width: 26px;
+  height: 26px;
+  border-top: 1.5px solid rgba(196, 166, 255, 0.55);
+  pointer-events: none;
 }
-@media (min-width: 1280px) {
-  .dsh-hero-banner {
-    min-height: 330px;
-  }
-  .dsh-hero-mascot {
-    height: 360px;
-    right: 8%;
-  }
-  .dsh-hero-ring {
-    right: 9%;
-    width: 420px;
-    height: 420px;
-  }
+.dsh-hero-tick-tl {
+  left: 18px;
+  border-left: 1.5px solid rgba(74, 222, 128, 0.6);
+  border-top-left-radius: 10px;
 }
-.dsh-hero-copy {
-  position: relative;
+.dsh-hero-tick-tr {
+  right: 18px;
+  border-right: 1.5px solid rgba(251, 113, 133, 0.6);
+  border-top-right-radius: 10px;
+}
+.dsh-hero-actions {
+  position: absolute;
+  right: 28px;
+  top: 50%;
   z-index: 2;
-  max-width: 520px;
-  padding: 40px 40px 44px;
+  transform: translateY(-50%);
+}
+.dsh-hero-actions .coco-btn {
+  padding-inline: 20px 18px;
 }
 .dsh-hero-strip {
   position: relative;
@@ -709,22 +718,23 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 22px;
-  border-radius: 0 0 30px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(196, 166, 255, 0.2);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)), rgba(20, 11, 48, 0.7);
-  padding: 16px 28px 18px 32px;
+  border-radius: 0 0 29px 29px;
+  border-top: 1px solid rgba(196, 166, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)), #150c33;
+  padding: 18px 28px 24px 32px;
 }
 .dsh-hero-avatar {
   position: relative;
-  margin-top: -66px;
-  height: 104px;
-  width: 104px;
+  margin-top: -74px;
+  height: 108px;
+  width: 108px;
   flex: none;
-  border-radius: 28px;
+  border-radius: 30px;
   padding: 3px;
   background: linear-gradient(150deg, #c4a6ff, #7c45ff 50%, #d02c97);
-  box-shadow: rgba(109, 59, 255, 0.5) 0 18px 44px -14px;
+  box-shadow:
+    #150c33 0 0 0 5px,
+    rgba(109, 59, 255, 0.5) 0 18px 44px -14px;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .dsh-hero-avatar:hover {
@@ -736,16 +746,17 @@
   flex-direction: column;
   align-items: center;
   justify-self: center;
+  gap: 16px;
 }
 .dsh-hero-name {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 7px;
+  max-width: 260px;
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.2;
   color: #fff;
   text-align: center;
 }
@@ -757,19 +768,22 @@
 .dsh-hero-email {
   display: inline-flex;
   max-width: 100%;
+  height: 44px;
   align-items: center;
-  gap: 7px;
-  margin-top: 6px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  padding: 4px 10px 4px 9px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.75);
-  transition: border-color 0.2s ease;
+  gap: 9px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 14px 0 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 .dsh-hero-email:hover {
-  border-color: rgba(196, 166, 255, 0.45);
+  border-color: rgba(196, 166, 255, 0.55);
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-1px);
 }
 .dsh-hero-stats {
   display: flex;
@@ -1169,8 +1183,6 @@
 @media (prefers-reduced-motion: reduce) {
   .dsh-mascot-img,
   .dsh-mascot-shadow,
-  .dsh-hero-mascot,
-  .dsh-hero-ring,
   .dsh-ring-dot {
     animation: none !important;
   }

@@ -2,10 +2,9 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { ArrowRight, BadgeCheck, Check, Copy, KeyRound, LayoutGrid, Mail } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Check, Copy, Mail, PocketKnife } from 'lucide-react'
 import { useAuth, type UserProfile } from '@/components/auth-provider'
-import { CocoHeroBg } from '@/components/coco/coco-hero-bg'
-import { GlyphTier } from '@/components/dashboard/dash-glyphs'
+import { DashCandles } from '@/components/dashboard/dash-candles'
 import { TIER_LABEL } from '@/lib/tiers'
 
 export function DashDesktopHero({
@@ -31,81 +30,54 @@ export function DashDesktopHero({
 
   return (
     <section className="dsh-hero hidden md:block" data-testid="dash-desktop-hero">
-      <div className="dsh-hero-banner">
-        <CocoHeroBg />
-        <span className="dsh-hero-ring" aria-hidden="true" />
-        <Image
-          src="/dash/mascot.webp"
-          alt="Coco AI mascot"
-          width={525}
-          height={900}
-          className="dsh-hero-mascot"
-          priority
-          sizes="300px"
-        />
-        <div className="dsh-hero-copy">
-          <span className="coco-eyebrow">
-            <GlyphTier className="h-3 w-3" />
-            Operator console
-          </span>
-          <h1 className="coco-display coco-title-gradient mt-4 text-[2.1rem] leading-[1.05] lg:text-[2.6rem]">
-            Welcome back,
-            <br />
-            {profile.name.split(' ')[0] || 'Trader'}.
-          </h1>
-          <p className="mt-3 max-w-[44ch] text-[13.5px] leading-relaxed text-white/60">
-            Your engine is synced and reading OTC and real market charts. Open a desk and let Coco call it.
-          </p>
-          <div className="mt-6 flex items-center gap-3">
+      <div className="dsh-hero-frame">
+        <div className="dsh-hero-banner">
+          <DashCandles />
+          <span className="dsh-hero-tick dsh-hero-tick-tl" aria-hidden="true" />
+          <span className="dsh-hero-tick dsh-hero-tick-tr" aria-hidden="true" />
+          <div className="dsh-hero-actions">
             <button type="button" onClick={onOpenTools} className="coco-btn coco-btn-primary" data-testid="desktop-open-tools-btn">
-              <LayoutGrid className="h-4 w-4" />
+              <PocketKnife className="h-4 w-4" />
               Open tools
               <ArrowRight className="h-4 w-4" />
             </button>
-            <a href="https://t.me/Ayan_Dead" target="_blank" rel="noopener noreferrer" className="coco-btn coco-btn-ghost" data-testid="desktop-upgrade-link">
-              <KeyRound className="h-4 w-4" />
-              {hasAccess ? 'Upgrade licence' : 'Unlock access'}
-            </a>
           </div>
         </div>
-      </div>
 
-      <div className="dsh-hero-strip">
-        <dl className="dsh-hero-stats">
-          <Stat label="Plan" value={TIER_LABEL[tier]} />
-          <Stat label="Daily limit" value={!hasAccess ? 'Locked' : isUnlimited ? '∞' : `${limit} / tool`} />
-        </dl>
+        <div className="dsh-hero-strip">
+          <dl className="dsh-hero-stats">
+            <Stat label="Plan" value={TIER_LABEL[tier]} />
+            <Stat label="Daily limit" value={!hasAccess ? 'Locked' : isUnlimited ? '∞' : `${limit} / tool`} />
+          </dl>
 
-        <div className="dsh-hero-ident">
-          <button type="button" onClick={onProfile} className="dsh-hero-avatar" aria-label="Open profile card" data-testid="desktop-avatar-btn">
-            <Image src="/coco-profile.png" alt={profile.name} width={112} height={112} className="h-full w-full rounded-[22px] object-cover" />
-          </button>
-          <p className="dsh-hero-name" data-testid="desktop-hero-name">
-            <span className="truncate">{profile.name}</span>
-            {verified && <BadgeCheck className="h-[18px] w-[18px] flex-none text-[#b48cff]" data-testid="desktop-verified-icon" />}
-          </p>
-        </div>
+          <div className="dsh-hero-ident">
+            <button type="button" onClick={onProfile} className="dsh-hero-avatar" aria-label="Open profile card" data-testid="desktop-avatar-btn">
+              <Image src="/coco-profile.png" alt={profile.name} width={112} height={112} className="h-full w-full rounded-[22px] object-cover" />
+            </button>
+            <p className="dsh-hero-name" data-testid="desktop-hero-name">
+              <span className="truncate">{profile.name}</span>
+              {verified && <BadgeCheck className="h-[18px] w-[18px] flex-none text-[#b48cff]" data-testid="desktop-verified-icon" />}
+            </p>
+          </div>
 
-        <div className="dsh-hero-contact">
-          <button type="button" onClick={copyEmail} className="dsh-hero-email" data-testid="desktop-copy-email">
-            <Mail className="h-3.5 w-3.5 text-[#c4a6ff]" />
-            <span className="truncate">{profile.email}</span>
-            {copied ? <Check className="h-3.5 w-3.5 text-[#8ef0c4]" /> : <Copy className="h-3.5 w-3.5 text-white/45" />}
-          </button>
+          <div className="dsh-hero-contact">
+            <button type="button" onClick={copyEmail} className="dsh-hero-email" data-testid="desktop-copy-email">
+              <Mail className="h-4 w-4 text-[#c4a6ff]" />
+              <span className="truncate">{profile.email}</span>
+              {copied ? <Check className="h-4 w-4 text-[#8ef0c4]" /> : <Copy className="h-4 w-4 text-white/45" />}
+            </button>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function Stat({ label, value, icon }: { label: string; value: string; icon?: React.ReactNode }) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="dsh-hero-stat">
       <dt className="coco-mono text-[9px] uppercase tracking-[0.16em] text-white/40">{label}</dt>
-      <dd className="mt-1 flex items-center gap-1.5 text-[17px] font-semibold text-white">
-        {icon}
-        {value}
-      </dd>
+      <dd className="mt-1 text-[17px] font-semibold text-white">{value}</dd>
     </div>
   )
 }

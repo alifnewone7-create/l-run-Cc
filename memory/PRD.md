@@ -46,6 +46,13 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Follow-up (same day): lower dashboard zone is again the white `coco-light coco-curve-top` block (mobile + desktop, below the dark hero/mascot zone); quota gauges restyled for light zone; glow `drop-shadow` filter removed (mobile lag); arc now FILLS with usage (used/limit, hidden at 0 to avoid round-cap dots), centre shows used count + "of N used", footer "N left today". testid `quota-used-*` replaces `quota-remaining-*`.
   - Follow-up 2: restored the previous section chrome in the white zone — "Access tier" eyebrow, "Your plan and daily engine quota." headline (description removed per user), dark `coco-shade` "Current plan" card (plan name, reset-note toggle, Upgrade licence CTA), then the Daily quota panel with gauges. Section testid `dashboard-tier`, plan card `tier-plan-card`.
 
+- 2026-09-18 (desktop hero cleanup, Banglish request):
+  - Desktop hero: copy text ("Operator console / Welcome back…"), mascot, orbit ring and "Upgrade licence" button removed. Banner (230px) now shows a custom candlestick chart (`components/dashboard/dash-candles.tsx`, deterministic seeded data, mint/rose candles + glowing iris price line + dashed grid) with only the "Open tools" button (right, vertically centred).
+  - Trading-themed frame: `.dsh-hero-frame` gradient hairline (mint → iris → rose) with soft blurred glow, chart-axis corner ticks (`.dsh-hero-tick-*`).
+  - Avatar/name spacing fixed (avatar `margin-top:-74px`, strip-coloured 5px ring, `gap:16px`); email now a 44px rounded-rectangle (10px radius) matching the button shape.
+  - Mobile "Open tools" button: pill → 10px rounded rectangle (same as desktop). "Open tools" icon on both → lucide `PocketKnife`.
+  - Reminder: production `next start` → run `yarn build` + `sudo supervisorctl restart frontend` after changes.
+
 ## Backlog
 - P1: none pending from user.
 - P2: Consider self-hosting all flag SVGs to remove the external CDN dependency entirely.

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { BadgeCheck, LayoutGrid } from 'lucide-react'
+import { BadgeCheck, PocketKnife } from 'lucide-react'
 import { useAuth, type UserProfile } from '@/components/auth-provider'
 import { TIER_LABEL } from '@/lib/tiers'
 
@@ -41,7 +41,7 @@ export function DashMascot({ onOpen }: { onOpen: () => void }) {
         <span className="dsh-mascot-shadow" aria-hidden="true" />
       </div>
       <button type="button" onClick={onOpen} className="coco-btn coco-btn-primary dsh-open-tools" data-testid="open-tools-btn">
-        <LayoutGrid className="h-4 w-4" />
+        <PocketKnife className="h-4 w-4" />
         Open tools
       </button>
       <p className="coco-mono mt-3 text-[9.5px] uppercase tracking-[0.16em] text-white/40">6 AI desks · one console</p>
