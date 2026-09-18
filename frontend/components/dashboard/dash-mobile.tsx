@@ -32,8 +32,8 @@ export function DashMascot({ onOpen }: { onOpen: () => void }) {
         <Image
           src="/dash/mascot.webp"
           alt="Coco AI mascot"
-          width={525}
-          height={900}
+          width={580}
+          height={1100}
           className="dsh-mascot-img"
           priority
           sizes="(max-width: 767px) 62vw, 320px"

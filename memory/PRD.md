@@ -53,6 +53,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Mobile "Open tools" button: pill → 10px rounded rectangle (same as desktop). "Open tools" icon on both → lucide `PocketKnife`.
   - Reminder: production `next start` → run `yarn build` + `sudo supervisorctl restart frontend` after changes.
   - Follow-up: frame glow removed (only the thin gradient hairline remains). SVG candle component deleted; banner now uses an AI-generated (Gemini Nano Banana) cosmic-purple candlestick artwork `/public/dash/hero-banner.webp` (1856×576, `object-fit: cover`, position `center 62%`) with a bottom shade overlay; banner height 250px, "Open tools" button moved to the calm left side.
+  - Mascot replaced: new AI-generated (Gemini 3 Pro image, refs: user's techwear character + coco-profile.png) robotic hooded COCO AI character holding a holographic "C", luxury purple techwear; chroma-key removed via numpy → `/public/dash/mascot.webp` (580×1100). Mobile mascot height 300→350px. Generation script + raw assets kept in `/app/memory/assets/`.
 
 ## Backlog
 - P1: none pending from user.
