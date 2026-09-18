@@ -55,6 +55,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Follow-up: frame glow removed (only the thin gradient hairline remains). SVG candle component deleted; banner now uses an AI-generated (Gemini Nano Banana) cosmic-purple candlestick artwork `/public/dash/hero-banner.webp` (1856×576, `object-fit: cover`, position `center 62%`) with a bottom shade overlay; banner height 250px, "Open tools" button moved to the calm left side.
   - Mascot replaced: new AI-generated (Gemini 3 Pro image, refs: user's techwear character + coco-profile.png) robotic hooded COCO AI character holding a holographic "C", luxury purple techwear; chroma-key removed via numpy → `/public/dash/mascot.webp` (580×1100). Mobile mascot height 300→350px. Generation script + raw assets kept in `/app/memory/assets/`.
   - Mascot v2: regenerated with the user's luxury trench-coat reference (gold-trimmed coat, tie, chain, belt, watch, glossy sneakers), robotic hooded visor head, levitating "C". Saved as NEW filename `/public/dash/mascot-v2.webp` (671×1100) to bust browser/Next image cache (old `mascot.webp` deleted). Rule: whenever an image is replaced, change the filename.
+  - Mascot v3: regenerated from the user's seated-on-glowing-crate reference (`/app/memory/assets/ref_char3.png`, script `gen_mascot3.py`) → `/public/dash/mascot-v3.webp` (726×1100); v2 deleted.
 
 ## Backlog
 - P1: none pending from user.
