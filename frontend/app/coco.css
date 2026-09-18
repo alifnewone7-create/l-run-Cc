@@ -354,6 +354,13 @@
 @media (max-width: 767px) {
   .coco-bottom-nav {
     display: grid;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    will-change: auto;
+    background: linear-gradient(180deg, rgba(31, 19, 74, 0.98), rgba(12, 7, 30, 0.99));
+  }
+  .coco-bottom-nav .coco-bnav-item.is-active svg {
+    filter: none;
   }
 }
 .coco-bottom-nav::before {

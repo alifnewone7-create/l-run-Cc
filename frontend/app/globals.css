@@ -209,6 +209,11 @@
       linear-gradient(155deg, oklch(0.21 0.05 268) 0%, oklch(0.16 0.04 276) 45%, oklch(0.13 0.03 282) 100%);
     background-attachment: fixed;
   }
+  @media (max-width: 767px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
   html {
     @apply font-sans;
   }

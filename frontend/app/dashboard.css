@@ -2,7 +2,7 @@
 
 .dsh-root {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100vh;
   color: #fff;
   background:
     radial-gradient(90% 50% at 50% -10%, rgba(110, 62, 210, 0.36), transparent 60%),
@@ -23,7 +23,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: 100dvh;
+  min-height: 100vh;
   flex-direction: column;
 }
 .dsh-dark-zone {
@@ -1199,7 +1199,25 @@
   }
   .dsh-mascot-img {
     filter: none;
-    animation-duration: 7s;
+    animation: none;
+    will-change: auto;
+  }
+  .dsh-mascot-halo {
+    display: none;
+  }
+  .dsh-mhead {
+    animation: none;
+  }
+  .dsh-hero,
+  .dsh-gauge,
+  .dsh-quota {
+    box-shadow: none;
+  }
+  .dsh-gauge {
+    transition: none;
+  }
+  .dsh-gauge-fill {
+    transition: none;
   }
   .dsh-mascot-shadow {
     filter: none;
