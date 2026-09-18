@@ -52,6 +52,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Avatar/name spacing fixed (avatar `margin-top:-74px`, strip-coloured 5px ring, `gap:16px`); email now a 44px rounded-rectangle (10px radius) matching the button shape.
   - Mobile "Open tools" button: pill → 10px rounded rectangle (same as desktop). "Open tools" icon on both → lucide `PocketKnife`.
   - Reminder: production `next start` → run `yarn build` + `sudo supervisorctl restart frontend` after changes.
+  - Follow-up: frame glow removed (only the thin gradient hairline remains). SVG candle component deleted; banner now uses an AI-generated (Gemini Nano Banana) cosmic-purple candlestick artwork `/public/dash/hero-banner.webp` (1856×576, `object-fit: cover`, position `center 62%`) with a bottom shade overlay; banner height 250px, "Open tools" button moved to the calm left side.
 
 ## Backlog
 - P1: none pending from user.

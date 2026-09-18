@@ -637,55 +637,43 @@
 .dsh-hero {
   animation: coco-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-/* Trading-themed frame: gradient hairline (iris → mint → rose) with a soft outer glow */
+/* Trading-themed frame: gradient hairline (iris → mint → rose), no glow */
 .dsh-hero-frame {
   position: relative;
   border-radius: 30px;
   padding: 1.5px;
   background:
     linear-gradient(90deg, rgba(74, 222, 128, 0.85) 0%, rgba(139, 92, 255, 0.9) 28%, rgba(196, 166, 255, 0.95) 50%, rgba(139, 92, 255, 0.9) 72%, rgba(251, 113, 133, 0.85) 100%);
-  box-shadow:
-    rgba(109, 59, 255, 0.28) 0 24px 60px -30px,
-    rgba(74, 222, 128, 0.12) -12px 0 40px -24px,
-    rgba(251, 113, 133, 0.12) 12px 0 40px -24px;
-}
-.dsh-hero-frame::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: inherit;
-  background: inherit;
-  filter: blur(14px);
-  opacity: 0.35;
-  pointer-events: none;
 }
 .dsh-hero-banner {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  height: 230px;
+  height: 250px;
   border-radius: 29px 29px 0 0;
-  background:
-    radial-gradient(70% 90% at 50% 100%, rgba(150, 105, 255, 0.28), transparent 65%),
-    linear-gradient(168deg, #2b1a6d 0%, #221355 45%, #170d3a 100%);
+  background: #1a0f3d;
 }
-.dsh-candles {
+.dsh-hero-art {
   position: absolute;
   inset: 0;
   z-index: 0;
-  width: 100%;
   height: 100%;
-  opacity: 0.72;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 62%;
   pointer-events: none;
 }
-.dsh-candles-line {
-  filter: drop-shadow(0 0 6px rgba(196, 166, 255, 0.6));
+.dsh-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(23, 13, 58, 0.1) 0%, transparent 40%, rgba(21, 12, 51, 0.7) 100%);
+  pointer-events: none;
 }
 /* Chart-axis corner ticks */
 .dsh-hero-tick {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 18px;
   width: 26px;
   height: 26px;
@@ -704,7 +692,7 @@
 }
 .dsh-hero-actions {
   position: absolute;
-  right: 28px;
+  left: 32px;
   top: 50%;
   z-index: 2;
   transform: translateY(-50%);

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { ArrowRight, BadgeCheck, Check, Copy, Mail, PocketKnife } from 'lucide-react'
 import { useAuth, type UserProfile } from '@/components/auth-provider'
-import { DashCandles } from '@/components/dashboard/dash-candles'
 import { TIER_LABEL } from '@/lib/tiers'
 
 export function DashDesktopHero({
@@ -32,7 +31,8 @@ export function DashDesktopHero({
     <section className="dsh-hero hidden md:block" data-testid="dash-desktop-hero">
       <div className="dsh-hero-frame">
         <div className="dsh-hero-banner">
-          <DashCandles />
+          <Image src="/dash/hero-banner.webp" alt="" width={1856} height={576} className="dsh-hero-art" priority sizes="(min-width: 1280px) 1400px, 100vw" />
+          <span className="dsh-hero-shade" aria-hidden="true" />
           <span className="dsh-hero-tick dsh-hero-tick-tl" aria-hidden="true" />
           <span className="dsh-hero-tick dsh-hero-tick-tr" aria-hidden="true" />
           <div className="dsh-hero-actions">
