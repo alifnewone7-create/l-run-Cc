@@ -56,6 +56,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Mascot replaced: new AI-generated (Gemini 3 Pro image, refs: user's techwear character + coco-profile.png) robotic hooded COCO AI character holding a holographic "C", luxury purple techwear; chroma-key removed via numpy → `/public/dash/mascot.webp` (580×1100). Mobile mascot height 300→350px. Generation script + raw assets kept in `/app/memory/assets/`.
   - Mascot v2: regenerated with the user's luxury trench-coat reference (gold-trimmed coat, tie, chain, belt, watch, glossy sneakers), robotic hooded visor head, levitating "C". Saved as NEW filename `/public/dash/mascot-v2.webp` (671×1100) to bust browser/Next image cache (old `mascot.webp` deleted). Rule: whenever an image is replaced, change the filename.
   - Mascot v3: regenerated from the user's seated-on-glowing-crate reference (`/app/memory/assets/ref_char3.png`, script `gen_mascot3.py`) → `/public/dash/mascot-v3.webp` (726×1100); v2 deleted.
+  - Profile sheet: tier chip next to the name removed (mobile + desktop); mobile sheet is drag-to-dismiss (pointer events on `.dsh-sheet`, `is-dragging`/`is-settled` classes, close when dy > 110px). Mobile perf: `.dsh-root::after` noise disabled, mascot drop-shadow/shadow-blur animation removed, backdrop blur 14→6px on <768px. Testing agent iteration_12: all pass.
 
 ## Backlog
 - P1: none pending from user.
