@@ -60,6 +60,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - PERF ROOT CAUSE (mobile scroll lag): `body { background-attachment: fixed }` with 5 gradients in `globals.css` repainted the viewport every scroll frame → 22 fps. Fixed via `@media (max-width:767px) body { background-attachment: scroll }` → 61 fps (60 at 4× CPU throttle). Also on mobile: bottom-nav backdrop blur removed (near-opaque bg), mascot float animation + halo off, gauge transitions off, `100dvh`→`100vh` on `.dsh-root/.dsh-main`. Testing agent iteration_13: 100%. Method: rAF+scrollTo FPS probe + hide-element bisection via screenshot_tool.
   - Desktop banner art → AI-generated bull (green, left) vs bear (red, right) with candlestick chart on cosmic-purple bg: `/public/dash/hero-bullbear.webp` (ref: user's green/red banner, script `gen_banner2.py`). Banner 270px, "Open tools" button top-centre. Old hero-banner.webp deleted.
   - Banner v2: candles removed from the centre, purple-graded bull (mint-violet) / bear (rose-magenta) → `/public/dash/hero-bullbear-v2.webp`; frame hairline changed from multi-colour to dark-purple gradient (`#8b5cff → #2a1660 → #7c45ff`), corner ticks lilac.
+  - Sidebar collapse toggle moved from the header to the footer (above the profile card) as a full-width `dsh-side-link dsh-side-toggle` row ("Collapse sidebar"); header now brand-only.
 
 ## Backlog
 - P1: none pending from user.

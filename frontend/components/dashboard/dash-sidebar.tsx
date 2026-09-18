@@ -58,16 +58,6 @@ export function DashSidebar({
             Coco <span className="coco-accent">AI</span>
           </span>
         </Link>
-        <button
-          type="button"
-          onClick={onToggle}
-          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          aria-pressed={collapsed}
-          className="dsh-side-toggle"
-          data-testid="sidebar-toggle"
-        >
-          {collapsed ? <PanelLeftOpen className="h-[17px] w-[17px]" /> : <PanelLeftClose className="h-[17px] w-[17px]" />}
-        </button>
       </div>
 
       <nav className="dsh-side-nav">
@@ -102,6 +92,20 @@ export function DashSidebar({
       </nav>
 
       <div className="dsh-side-foot">
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          aria-pressed={collapsed}
+          title={collapsed ? 'Expand sidebar' : undefined}
+          className="dsh-side-link dsh-side-toggle"
+          data-testid="sidebar-toggle"
+        >
+          <span className="dsh-side-link-icon">
+            {collapsed ? <PanelLeftOpen className="h-[17px] w-[17px]" /> : <PanelLeftClose className="h-[17px] w-[17px]" />}
+          </span>
+          <span className="dsh-side-label">Collapse sidebar</span>
+        </button>
         <button
           type="button"
           onClick={onProfile}
