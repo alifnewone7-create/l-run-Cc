@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createPortal } from 'react-dom'
 import { BadgeCheck, Check, Copy, LogOut, Mail, X } from 'lucide-react'
@@ -24,8 +24,35 @@ export function DashProfileSheet({
   const [mounted, setMounted] = useState(false)
   const [closing, setClosing] = useState(false)
   const [copied, setCopied] = useState(false)
+  const sheetRef = useRef<HTMLDivElement>(null)
+  const drag = useRef({ startY: 0, dy: 0, active: false })
 
   useEffect(() => setMounted(true), [])
+
+  function onDragStart(e: React.PointerEvent) {
+    if (window.innerWidth >= 768) return
+    drag.current = { startY: e.clientY, dy: 0, active: true }
+    sheetRef.current?.classList.add('is-dragging')
+  }
+  function onDragMove(e: React.PointerEvent) {
+    if (!drag.current.active || !sheetRef.current) return
+    const dy = Math.max(0, e.clientY - drag.current.startY)
+    drag.current.dy = dy
+    sheetRef.current.style.transform = `translate3d(0, ${dy}px, 0)`
+  }
+  function onDragEnd() {
+    if (!drag.current.active || !sheetRef.current) return
+    drag.current.active = false
+    const el = sheetRef.current
+    el.classList.remove('is-dragging')
+    el.classList.add('is-settled')
+    if (drag.current.dy > 110) {
+      el.style.transform = 'translate3d(0, 110%, 0)'
+      close()
+    } else {
+      el.style.transform = ''
+    }
+  }
 
   useEffect(() => {
     if (!open) return
@@ -74,7 +101,15 @@ export function DashProfileSheet({
         className={cn('dsh-backdrop', closing && 'is-closing')}
         data-testid="profile-sheet-backdrop"
       />
-      <div className={cn('dsh-sheet', closing && 'is-closing')} data-testid="profile-sheet">
+      <div
+        ref={sheetRef}
+        className={cn('dsh-sheet', closing && 'is-closing')}
+        data-testid="profile-sheet"
+        onPointerDown={onDragStart}
+        onPointerMove={onDragMove}
+        onPointerUp={onDragEnd}
+        onPointerCancel={onDragEnd}
+      >
         <div className="dsh-sheet-banner">
           <span className="dsh-sheet-banner-shape a" aria-hidden="true" />
           <span className="dsh-sheet-banner-shape b" aria-hidden="true" />
@@ -100,10 +135,6 @@ export function DashProfileSheet({
               {profile.name}
             </h2>
             {verified && <BadgeCheck className="h-5 w-5 flex-none text-[#b48cff]" data-testid="profile-sheet-verified-icon" />}
-            <span className="dsh-tier-chip" data-testid="profile-sheet-tier-chip">
-              <GlyphTier className="h-3 w-3" />
-              {TIER_LABEL[tier]}
-            </span>
           </div>
 
           <div className="mt-5 flex flex-col gap-2.5">
