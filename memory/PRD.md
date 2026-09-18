@@ -58,6 +58,7 @@ Design system: "cosmic purple" — background `#0b0618`, iris `#6d3bff` / `#8b5c
   - Mascot v3: regenerated from the user's seated-on-glowing-crate reference (`/app/memory/assets/ref_char3.png`, script `gen_mascot3.py`) → `/public/dash/mascot-v3.webp` (726×1100); v2 deleted.
   - Profile sheet: tier chip next to the name removed (mobile + desktop); mobile sheet is drag-to-dismiss (pointer events on `.dsh-sheet`, `is-dragging`/`is-settled` classes, close when dy > 110px). Mobile perf: `.dsh-root::after` noise disabled, mascot drop-shadow/shadow-blur animation removed, backdrop blur 14→6px on <768px. Testing agent iteration_12: all pass.
   - PERF ROOT CAUSE (mobile scroll lag): `body { background-attachment: fixed }` with 5 gradients in `globals.css` repainted the viewport every scroll frame → 22 fps. Fixed via `@media (max-width:767px) body { background-attachment: scroll }` → 61 fps (60 at 4× CPU throttle). Also on mobile: bottom-nav backdrop blur removed (near-opaque bg), mascot float animation + halo off, gauge transitions off, `100dvh`→`100vh` on `.dsh-root/.dsh-main`. Testing agent iteration_13: 100%. Method: rAF+scrollTo FPS probe + hide-element bisection via screenshot_tool.
+  - Desktop banner art → AI-generated bull (green, left) vs bear (red, right) with candlestick chart on cosmic-purple bg: `/public/dash/hero-bullbear.webp` (ref: user's green/red banner, script `gen_banner2.py`). Banner 270px, "Open tools" button top-centre. Old hero-banner.webp deleted.
 
 ## Backlog
 - P1: none pending from user.
